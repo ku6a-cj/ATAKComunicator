@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.gallery.GalleryFragment"
+    android:background="#302E2E">
+
+    <EditText
+        android:id="@+id/Lat"
+        android:layout_width="378dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="68dp"
+        android:digits="0123456789-"
+        android:hint="Tu wpisz szerokosc geograficzna N/S"
+        android:inputType="numberDecimal"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Long"
+        android:layout_width="377dp"
+        android:layout_height="52dp"
+        android:layout_alignTop="@+id/Lat"
+        android:layout_marginTop="24dp"
+        android:digits="0123456789-"
+        android:hint="Tu wpisz długość geograficzną W/E"
+        android:inputType="numberDecimal"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Lat" />
+
+    <Button
+        android:id="@+id/send_data2"
+        android:layout_width="362dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/button1"
+        android:text="Ustaw znacznik przeciwnika"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlly"
+        app:backgroundTint="@null"/>
+
+    <Button
+        android:id="@+id/buttonAlly"
+        android:layout_width="372dp"
+        android:layout_height="58dp"
+        android:layout_alignTop="@+id/Long"
+        android:layout_marginTop="132dp"
+        android:background="@drawable/button1"
+        android:text="Ustaw znacznik sojusznika"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Long"
+        app:backgroundTint="@null"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

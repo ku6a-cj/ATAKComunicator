@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HttpConnect</string>
+    <string name="ask_given_http">Ask given http</string>
+    <string name="textview">TextView</string>
+</resources>

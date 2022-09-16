@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.slideshow.SlideshowFragment"
+    android:background="#302E2E">
+
+    <EditText
+        android:id="@+id/LatChange"
+        android:layout_width="378dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="56dp"
+        android:digits="0123456789-"
+        android:hint="Tu wpisz szerokosc geograficzna N/S"
+        android:inputType="numberDecimal"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/LongChange"
+        android:layout_width="377dp"
+        android:layout_height="52dp"
+        android:layout_alignTop="@+id/LatChange"
+        android:layout_marginTop="24dp"
+        android:digits="0123456789-"
+        android:hint="Tu wpisz długość geograficzną W/E"
+        android:inputType="numberDecimal"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LatChange" />
+
+    <EditText
+        android:id="@+id/edMessageChange"
+        android:layout_width="376dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:digits="0123456789."
+        android:hint="Podaj ID punktu"
+        android:inputType="numberDecimal"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LongChange" />
+
+    <Button
+        android:id="@+id/send_data2Change"
+        android:layout_width="362dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/button1"
+        android:text="Zmien polozenie znacznika przeciwnika"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAllyChange"
+        app:backgroundTint="@null"/>
+
+    <Button
+        android:id="@+id/buttonAllyChange"
+        android:layout_width="372dp"
+        android:layout_height="58dp"
+        android:layout_alignTop="@+id/LongChange"
+        android:layout_marginTop="132dp"
+        android:background="@drawable/button1"
+        android:text="Zmien polozenie znacznika sojusznika"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LongChange"
+        app:backgroundTint="@null"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
