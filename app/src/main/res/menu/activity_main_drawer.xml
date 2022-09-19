@@ -6,20 +6,28 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="?android:attr/actionModeFindDrawable"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="?android:attr/textSelectHandle"
             android:title="Dodaj znacznik" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="?attr/homeAsUpIndicator"
             android:title="Zmien polozenie znacznika" />
         <item
             android:id="@+id/nav_info"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Informacje" />
+        <item
+            android:id="@+id/nav_otherfunctions"
+            android:icon="@android:drawable/ic_dialog_alert"
+            android:title="Inne Funkcje" />
+        <item
+            android:id="@+id/nav_api"
+            android:icon="@drawable/googleg_disabled_color_18"
+            android:title="API" />
 
     </group>
 </menu>

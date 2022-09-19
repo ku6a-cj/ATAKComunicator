@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.otherfunctions.otherFunctions"
+    android:background="#302E2E">
+
+    <Button
+        android:id="@+id/AddAtackAircraft"
+        android:layout_width="362dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/button1"
+        android:text="Dodaj samolot myśliwski"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/AddStrikeAircraft"
+        android:layout_width="362dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button1"
+        android:text="Dodaj samolot szturmowy"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddAtackAircraft" />
+
+    <Button
+        android:id="@+id/MarkMyLocation"
+        android:layout_width="362dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/button1"
+        android:text="Zaznacz moje polozenie na mapie"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddStrikeAircraft" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

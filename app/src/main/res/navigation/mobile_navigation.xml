@@ -28,4 +28,15 @@
         android:name="com.example.atakcomunicator.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_otherfunctions"
+        android:name="com.example.atakcomunicator.ui.otherfunctions.otherFunctions"
+        android:label="inne funkcje"
+        tools:layout="@layout/fragment_other_functions" />
+
+    <fragment
+        android:id="@+id/nav_api"
+        android:name="com.example.atakcomunicator.ui.api.ApiFragment"
+        android:label="API"
+        tools:layout="@layout/fragment_api" />
 </navigation>

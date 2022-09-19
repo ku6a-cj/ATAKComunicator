@@ -3,10 +3,14 @@ package com.example.atakcomunicator;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +30,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.atakcomunicator.databinding.ActivityMainBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,6 +46,12 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText edMessage;
     public boolean changedTemplate;
     public View TemplateView;
-
+    private FusedLocationProviderClient client;
+    public  String url = "https://run.mocky.io/";
     public MainActivity() {
     }
 
@@ -81,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_info)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_info, R.id.nav_otherfunctions,R.id.nav_api)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -102,37 +116,132 @@ public class MainActivity extends AppCompatActivity {
         Button AllyButton = findViewById(R.id.buttonAlly);
         Button buttonAllyChange = findViewById(R.id.buttonAllyChange);
         Button buttonenemyChange = findViewById(R.id.send_data2Change);
+        Button atackAircraft = findViewById(R.id.AddAtackAircraft);
+        Button strikeAirctaft = findViewById(R.id.AddStrikeAircraft);
+        Button markMyLocation = findViewById(R.id.MarkMyLocation);
+        EditText id= findViewById(R.id.getId);
+        EditText title= findViewById(R.id.title);
+        EditText lat= findViewById(R.id.getLat);
+        EditText lon= findViewById(R.id.getLong);
+        Button ButtonApi =findViewById(R.id.buttonApi);
+        TextView responseTV = findViewById(R.id.textViewResponse);
+    }
+
+    public void ApiGetInfo(){
+        EditText id= findViewById(R.id.getId);
+        EditText title= findViewById(R.id.title);
+        EditText lat= findViewById(R.id.getLat);
+        EditText lon= findViewById(R.id.getLong);
+        Button ButtonApi =findViewById(R.id.buttonApi);
+        // checking if the edit text is empty or not.
+        if (TextUtils.isEmpty(id.getText().toString()) && TextUtils.isEmpty(title.getText().toString())&& TextUtils.isEmpty(lat.getText().toString())&& TextUtils.isEmpty(lon.getText().toString())) {
+
+            // displaying a toast message if the edit text is empty.
+            Toast.makeText(MainActivity.this, "Please enter your data..", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String value= id.getText().toString();
+        int finalValue=Integer.parseInt(value);
+        String value1= lat.getText().toString();
+        int finalValue1=Integer.parseInt(value);
+        String value2= lon.getText().toString();
+        int finalValue2=Integer.parseInt(value);
+        // calling a method to update data in our API.
+        callPUTDataMethod(finalValue, title.getText().toString(),finalValue1, finalValue2 );
+
+    }
+
+    public void callPUTDataMethod(int id, String title, int lat, int lon) {
+        TextView responseTV = findViewById(R.id.textViewResponse);
 
 
-        sendMessage.setOnClickListener(new View.OnClickListener() {
+        // on below line we are creating a retrofit
+        // builder and passing our base url
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+
+                // as we are sending data in json format so
+                // we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+
+                // at last we are building our retrofit builder.
+                .build();
+
+        // below the line is to create an instance for our retrofit api class.
+        RetrofitApi retrofitAPI = retrofit.create(RetrofitApi.class);
+
+        // passing data from our text fields to our modal class.
+        DataModel2 modal = new DataModel2(id, title, lat, lon);
+
+        // calling a method to create an update and passing our modal class.
+        Call<DataModel2> call = retrofitAPI.updateData(modal);
+
+        // on below line we are executing our method.
+        call.enqueue(new Callback<DataModel2>() {
             @Override
-            public void onClick(View view) {
-                String clientMessage = edMessage.getText().toString().trim();
-                showMessage(clientMessage, Color.BLUE);
-                if (null != clientThread) {
-                    clientThread.sendMessage(clientMessage);
+            public void onResponse(Call<DataModel2> call, Response<DataModel2> response) {
+                // this method is called when we get response from our api.
+                Toast.makeText(MainActivity.this, "Data updated to API", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+                // we are getting a response from our body and
+                // passing it to our modal class.
+                DataModel2 responseFromAPI = response.body();
+
+                // on below line we are getting our data from modal class
+                // and adding it to our string.
+                String responsee= " ";
+                if (response.code()==200)
+                {
+                    responsee="request has succeeded";
+                }else{
+                    responsee="request failed";
                 }
+
+                String responseString = "Response Code : " + response.code()+ " "+ responsee + "\nid : " + responseFromAPI.getid() + "\n" + "title : " + responseFromAPI.getTitle()+"\n" + "lat : " + responseFromAPI.getlat()+"\n" + "lon : " + responseFromAPI.getlon();
+
+                // below line we are setting our string to our text view.
+                responseTV.setText(responseString);
+            }
+
+            @Override
+            public void onFailure(Call<DataModel2> call, Throwable t) {
+
+                // setting text to our text view when
+                // we get error response from API.
+                responseTV.setText("Error found is : " + t.getMessage());
             }
         });
+    }
 
 
-        connectToServer.setOnClickListener(view -> {
-            SERVER_IP = edMessage.getText().toString();
-            if (SERVER_IP.isEmpty()) {
-                Toast.makeText(MainActivity.this, "Podales wartosc spoza przedzialu!", Toast.LENGTH_SHORT).show();
-            }
-            //Log.e("Podane IP",SERVER_IP);
-            removeAllViews();
-            showMessage("Connecting to Server...", clientTextColor);
-            clientThread = new ClientThread();
-            thread = new Thread(clientThread);
-            thread.start();
-            // showMessage("Connected to Server...", clientTextColor);
-            hideConnectServerBtn();
-            edMessage.setText("");
-            edMessage.setHint("Tu wpisz wiadomosc do wysłania");
-            edMessage.setInputType(InputType.TYPE_CLASS_TEXT);
-        });
+    public void sendMessage(){
+        String clientMessage = edMessage.getText().toString().trim();
+        showMessage(clientMessage, Color.BLUE);
+        if (null != clientThread) {
+            clientThread.sendMessage(clientMessage);
+        }
+    }
+
+    public void connectToServer(){
+        SERVER_IP = edMessage.getText().toString();
+        if (SERVER_IP.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Podales wartosc spoza przedzialu!", Toast.LENGTH_SHORT).show();
+        }
+        //Log.e("Podane IP",SERVER_IP);
+        removeAllViews();
+        showMessage("Connecting to Server...", clientTextColor);
+        clientThread = new ClientThread();
+        thread = new Thread(clientThread);
+        thread.start();
+        // showMessage("Connected to Server...", clientTextColor);
+        hideConnectServerBtn();
+        edMessage.setText("");
+        edMessage.setHint("Tu wpisz wiadomosc do wysłania");
+        edMessage.setInputType(InputType.TYPE_CLASS_TEXT);
     }
 
 
@@ -346,6 +455,46 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestPermission() {
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
+    }
+
+    public void setMyLocation(){
+        Toast.makeText(this, "Wybrano umiesc znacznik w mojej lokalizacji",Toast.LENGTH_SHORT).show();
+        client = LocationServices.getFusedLocationProviderClient(this);
+        requestPermission();
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+            Log.e("nie masz uparawnien GPS", "bark uprawnien");
+        }
+        client.getLastLocation().addOnSuccessListener(MainActivity.this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    String MyMessageGPS= "1-Flag-"+String.valueOf(location.getLatitude())+"-"+String.valueOf(location.getLongitude())+"-0";
+                    String clientMessage2 = MyMessageGPS;
+                    if (null != clientThread) {
+                        clientThread.sendMessage(clientMessage2);
+                    }
+                    edMessage.setText("");
+                    // Log.e("My location",location.toString());
+                }
+            }
+        });
+    }
+
+    public void addStrikeAircraft(){
+        Toast.makeText(this, "Wybrano dodanie samolotu szturmowego",Toast.LENGTH_SHORT).show();
+        String clientMessage1 = "1-DSS-0-0-0";
+        if (null != clientThread) {
+            clientThread.sendMessage(clientMessage1);
+        }
+    }
+
+    public void addAtackAircraft(){
+        Toast.makeText(this, "Wybrano dodanie samolotu mysliwskiego",Toast.LENGTH_SHORT).show();
+        String clientMessage = "1-DSM-0-0-0";
+        //showMessage(clientMessage, Color.BLUE);
+        if (null != clientThread) {
+            clientThread.sendMessage(clientMessage);
+        }
     }
 
     class ClientThread implements Runnable {
