@@ -86,10 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(view -> Snackbar.make(view, "Otwórz pomoc", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-
-        );
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -101,6 +97,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigationView.getMenu().performIdentifierAction(R.id.nav_info, 0);
+            }
+        });
         AllyCounter = 0;
         EnemyCounter = 0;
         changedTemplate = false;
@@ -125,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
         EditText lon= findViewById(R.id.getLong);
         Button ButtonApi =findViewById(R.id.buttonApi);
         TextView responseTV = findViewById(R.id.textViewResponse);
+
+
     }
 
     public void ApiGetInfo(){
@@ -150,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
         callPUTDataMethod(finalValue, title.getText().toString(),finalValue1, finalValue2 );
 
     }
+
+
 
     public void callPUTDataMethod(int id, String title, int lat, int lon) {
         TextView responseTV = findViewById(R.id.textViewResponse);
@@ -231,7 +237,6 @@ public class MainActivity extends AppCompatActivity {
         if (SERVER_IP.isEmpty()) {
             Toast.makeText(MainActivity.this, "Podales wartosc spoza przedzialu!", Toast.LENGTH_SHORT).show();
         }
-        //Log.e("Podane IP",SERVER_IP);
         removeAllViews();
         showMessage("Connecting to Server...", clientTextColor);
         clientThread = new ClientThread();
