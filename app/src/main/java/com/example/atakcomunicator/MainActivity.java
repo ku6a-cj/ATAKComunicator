@@ -236,8 +236,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sendMessage(){
-        msgList = findViewById(R.id.msgList);
-        edMessage = findViewById(R.id.edMessage);
         String clientMessage = edMessage.getText().toString().trim();
         showMessage(clientMessage, Color.BLUE);
         if (null != clientThread) {
@@ -246,8 +244,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void connectToServer(){
-        msgList = findViewById(R.id.msgList);
-        edMessage = findViewById(R.id.edMessage);
         SERVER_IP = edMessage.getText().toString();
         if (SERVER_IP.isEmpty()) {
             Toast.makeText(MainActivity.this, "You entered a value out of range!", Toast.LENGTH_SHORT).show();
@@ -299,8 +295,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showMessage(final String message, final int color) {
-        msgList = findViewById(R.id.msgList);
-        edMessage = findViewById(R.id.edMessage);
         if(message.equals("Connected to Server!!")){
             connected=true;
             checkConnection();
