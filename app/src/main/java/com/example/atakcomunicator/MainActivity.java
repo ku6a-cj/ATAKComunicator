@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
     public void connectToServer(){
         SERVER_IP = edMessage.getText().toString();
         if (SERVER_IP.isEmpty()) {
-            Toast.makeText(MainActivity.this, "Podales wartosc spoza przedzialu!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "You entered a value out of range!", Toast.LENGTH_SHORT).show();
         }else{
             removeAllViews();
             showMessage("Connecting to Server...", clientTextColor);
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
         if(connected){
             hideConnectServerBtn();
             edMessage.setText("");
-            edMessage.setHint("Tu wpisz wiadomosc do wysłania");
+            edMessage.setHint("Enter the message here");
             edMessage.setInputType(InputType.TYPE_CLASS_TEXT);
         }
     }
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //ta funcjkacja dziala wewnatrz przez co nie mg modyfikowac czasu jaki wysylam a sluzy jedynie do wyswietlania
+    //this function works inside, so I cannot modify the time I send and it serves only to display
     public TextView textView(String message, int color) {
         if (null == message || message.trim().isEmpty()) {
             message = "<Empty Message>";
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
         String LaT = lat.getText().toString();
         String LoNg = lonng.getText().toString();
         if(LaT.isEmpty() || LoNg.isEmpty()){
-            Toast.makeText(this, "Nie wpisano tekstu do przeslania, uzupełnij pola tekstowe!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "There is no text to be sent, please fill in the text fields!",Toast.LENGTH_SHORT).show();
         }else if(Integer.parseInt(LaT)<=90 && Integer.parseInt(LaT)>=-90 && Integer.parseInt(LoNg)>=-180 && Integer.parseInt(LoNg)<=180 ){
             if (Integer.parseInt(LaT)<0 ){
                 isS="1";
@@ -320,13 +320,13 @@ public class MainActivity extends AppCompatActivity {
                 TextView edMessage = findViewById(R.id.edMessageChange);
                 String id = edMessage.getText().toString();
                 if(id.isEmpty()){
-                    Toast.makeText(this, "Nie podales wartosci ID, wiec ustawiono na 0!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "You did not enter an ID value, so it is set by default to 0!",Toast.LENGTH_SHORT).show();
                     id="0";
                 }
                 edMessage.setText("");
                 if(Integer.parseInt(id)>EnemyCounter){
-                    Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
-                    Message = "Uzytkownik podal bledne dane";
+                    Toast.makeText(this, "You entered a value out of the range!",Toast.LENGTH_SHORT).show();
+                    Message = "User inserted an incorrect data";
                 }else{
                     Message = "2-EFlag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW+"-"+id;
                 }
@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
                 clientThread.sendMessage(clientMessage);
             }
         }else{
-            Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You entered a value out of the range!",Toast.LENGTH_SHORT).show();
         }
 
         edMessage.setText("");
@@ -353,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
         String LaT = lat.getText().toString();
         String LoNg = lonng.getText().toString();
         if(LaT.isEmpty() || LoNg.isEmpty()){
-            Toast.makeText(this, "Nie wpisano tekstu do przeslania, uzupełnij pola tekstowe!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "\n" + "There is no text to be sent, please fill in the text fields!",Toast.LENGTH_SHORT).show();
         }else if(Integer.parseInt(LaT)<=90 && Integer.parseInt(LaT)>=-90 && Integer.parseInt(LoNg)>=-180 && Integer.parseInt(LoNg)<=180 ){
             if (Integer.parseInt(LaT)<0 ){
                 isS="1";
@@ -369,13 +369,13 @@ public class MainActivity extends AppCompatActivity {
                 TextView edMessage = findViewById(R.id.edMessageChange);
                 String id = edMessage.getText().toString();
                 if(id.isEmpty()){
-                    Toast.makeText(this, "Nie podales wartosci ID, wiec ustawiono na 0!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "\n" + "You did not enter an ID value, so it is set to 0!",Toast.LENGTH_SHORT).show();
                     id="0";
                 }
                 edMessage.setText("");
                 if(Integer.parseInt(id)>AllyCounter){
-                    Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
-                    Message = "Uzytkownik podal bledne dane";
+                    Toast.makeText(this, "You entered a value out of the range!",Toast.LENGTH_SHORT).show();
+                    Message = "User inserted an incorrect data";
                 }else{
                     Message = "2-Flag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW+"-"+id;
                 }
@@ -387,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
                 clientThread.sendMessage(clientMessage);
             }
         }else{
-            Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You entered a value out of the range!",Toast.LENGTH_SHORT).show();
         }
 
         edMessage.setText("");
@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
         String LaT = lat.getText().toString();
         String LoNg = lonng.getText().toString();
         if(LaT.isEmpty() || LoNg.isEmpty()){
-            Toast.makeText(this, "Nie wpisano tekstu do przeslania, uzupełnij pola tekstowe!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "There is no text for upload, please fill in the text fields!",Toast.LENGTH_SHORT).show();
         }else if(Integer.parseInt(LaT)<=90 && Integer.parseInt(LaT)>=-90 && Integer.parseInt(LoNg)>=-180 && Integer.parseInt(LoNg)<=180 ){
             if (Integer.parseInt(LaT)<0 ){
                 isS="1";
@@ -423,11 +423,11 @@ public class MainActivity extends AppCompatActivity {
                 clientThread.sendMessage(clientMessage);
             }
         }else{
-            Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You entered a value out of range!",Toast.LENGTH_SHORT).show();
         }
 
         edMessage.setText("");
-        Toast.makeText(this, "Dodano znacznik sojusznika o ID:"+ AllyCounter,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "\n" + "An ally tag has been added with ID:"+ AllyCounter,Toast.LENGTH_SHORT).show();
 
             AllyCounter = AllyCounter + 1;
 
@@ -442,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
         String LaT = lat.getText().toString();
         String LoNg = lonng.getText().toString();
         if(LaT.isEmpty() || LoNg.isEmpty()){
-            Toast.makeText(this, "Nie wpisano tekstu do przeslania, uzupełnij pola tekstowe!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "\n" + "There is no text to be sent, please fill in the text fields!",Toast.LENGTH_SHORT).show();
         }else if(Integer.parseInt(LaT)<=90 && Integer.parseInt(LaT)>=-90 && Integer.parseInt(LoNg)>=-180 && Integer.parseInt(LoNg)<=180 ){
             if (Integer.parseInt(LaT)<0 ){
                 isS="1";
@@ -461,11 +461,11 @@ public class MainActivity extends AppCompatActivity {
                 clientThread.sendMessage(clientMessage);
             }
         }else{
-            Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You entered a value out of range!",Toast.LENGTH_SHORT).show();
         }
 
         edMessage.setText("");
-        Toast.makeText(this, "Dodano znacznik przeciwnika o ID:"+ EnemyCounter,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "\n" + "An enemy marker has been added with an ID:"+ EnemyCounter,Toast.LENGTH_SHORT).show();
 
             EnemyCounter=EnemyCounter+1;
 
@@ -476,7 +476,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setMyLocation(){
-        Toast.makeText(this, "Wybrano umiesc znacznik w mojej lokalizacji",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You chose to put a marker at my location",Toast.LENGTH_SHORT).show();
         client = LocationServices.getFusedLocationProviderClient(this);
         requestPermission();
         if (ActivityCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
@@ -499,7 +499,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addStrikeAircraft(){
-        Toast.makeText(this, "Wybrano dodanie samolotu szturmowego",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You have chosen to add an attack plane",Toast.LENGTH_SHORT).show();
         String clientMessage1 = "1-DSS-0-0-0";
         if (null != clientThread) {
             clientThread.sendMessage(clientMessage1);
@@ -507,7 +507,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addAtackAircraft(){
-        Toast.makeText(this, "Wybrano dodanie samolotu mysliwskiego",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You have chosen to add a fighter plane",Toast.LENGTH_SHORT).show();
         String clientMessage = "1-DSM-0-0-0";
         //showMessage(clientMessage, Color.BLUE);
         if (null != clientThread) {
