@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     public View TemplateView;
     private FusedLocationProviderClient client;
     public  String url = "https://run.mocky.io/";
+    public boolean connected = false;
     public MainActivity() {
     }
 
@@ -236,17 +237,23 @@ public class MainActivity extends AppCompatActivity {
         SERVER_IP = edMessage.getText().toString();
         if (SERVER_IP.isEmpty()) {
             Toast.makeText(MainActivity.this, "Podales wartosc spoza przedzialu!", Toast.LENGTH_SHORT).show();
+        }else{
+            removeAllViews();
+            showMessage("Connecting to Server...", clientTextColor);
+            clientThread = new ClientThread();
+            thread = new Thread(clientThread);
+            thread.start();
+            showMessage("Connecting", clientTextColor);
         }
-        removeAllViews();
-        showMessage("Connecting to Server...", clientTextColor);
-        clientThread = new ClientThread();
-        thread = new Thread(clientThread);
-        thread.start();
-        // showMessage("Connected to Server...", clientTextColor);
-        hideConnectServerBtn();
-        edMessage.setText("");
-        edMessage.setHint("Tu wpisz wiadomosc do wysłania");
-        edMessage.setInputType(InputType.TYPE_CLASS_TEXT);
+    }
+
+    public void checkConnection(){
+        if(connected){
+            hideConnectServerBtn();
+            edMessage.setText("");
+            edMessage.setHint("Tu wpisz wiadomosc do wysłania");
+            edMessage.setInputType(InputType.TYPE_CLASS_TEXT);
+        }
     }
 
 
@@ -278,6 +285,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showMessage(final String message, final int color) {
+        if(message.equals("Connected to Server!!")){
+            connected=true;
+            checkConnection();
+        }
         handler.post(() -> msgList.addView(textView(message, color)));
     }
 
@@ -416,6 +427,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         edMessage.setText("");
+        Toast.makeText(this, "Dodano znacznik sojusznika o ID:"+ AllyCounter,Toast.LENGTH_SHORT).show();
 
             AllyCounter = AllyCounter + 1;
 
@@ -453,6 +465,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         edMessage.setText("");
+        Toast.makeText(this, "Dodano znacznik przeciwnika o ID:"+ EnemyCounter,Toast.LENGTH_SHORT).show();
 
             EnemyCounter=EnemyCounter+1;
 
@@ -521,6 +534,10 @@ public class MainActivity extends AppCompatActivity {
                         showMessage(message, Color.RED);
                         break;
                     }
+                    if(message.equals("Connected to Server!!")){
+                        connected=true;
+                    }
+                    checkConnection();
                     showMessage("Server: " + message, clientTextColor);
                 }
 

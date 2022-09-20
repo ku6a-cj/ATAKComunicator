@@ -15,6 +15,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:stretchColumns="1">
 
             <!-- everything you already have -->
@@ -31,6 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.071"
                 tools:ignore="HardcodedText"
+                android:textColor="@color/white"
                 android:gravity="center"/>
 
             <TextView
@@ -46,7 +48,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.17"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/textView3"
@@ -59,7 +62,8 @@
                 app:layout_constraintHorizontal_bias="0.375"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -72,7 +76,8 @@
                 app:layout_constraintHorizontal_bias="0.562"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/textView5"
@@ -85,7 +90,8 @@
                 app:layout_constraintHorizontal_bias="0.692"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/textView6"
@@ -98,7 +104,8 @@
                 app:layout_constraintHorizontal_bias="0.45"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/textView7"
@@ -111,7 +118,8 @@
                 app:layout_constraintHorizontal_bias="0.137"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/textView8"
@@ -124,7 +132,8 @@
                 app:layout_constraintHorizontal_bias="0.306"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textColor="@color/white"/>
 
 
         </TableLayout>

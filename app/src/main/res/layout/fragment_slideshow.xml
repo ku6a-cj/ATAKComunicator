@@ -9,12 +9,13 @@
 
     <EditText
         android:id="@+id/LatChange"
-        android:layout_width="378dp"
+        android:layout_width="313dp"
         android:layout_height="43dp"
         android:layout_marginTop="56dp"
         android:digits="0123456789-"
         android:hint="Tu wpisz szerokosc geograficzna N/S"
         android:inputType="numberDecimal"
+        android:textColorHint= "@color/black"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
@@ -24,13 +25,14 @@
 
     <EditText
         android:id="@+id/LongChange"
-        android:layout_width="377dp"
+        android:layout_width="313dp"
         android:layout_height="52dp"
         android:layout_alignTop="@+id/LatChange"
         android:layout_marginTop="24dp"
         android:digits="0123456789-"
         android:hint="Tu wpisz długość geograficzną W/E"
         android:inputType="numberDecimal"
+        android:textColorHint= "@color/black"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,12 +40,13 @@
 
     <EditText
         android:id="@+id/edMessageChange"
-        android:layout_width="376dp"
+        android:layout_width="313dp"
         android:layout_height="56dp"
         android:layout_marginTop="24dp"
         android:digits="0123456789."
         android:hint="Podaj ID punktu"
         android:inputType="numberDecimal"
+        android:textColorHint= "@color/black"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.514"
@@ -52,7 +55,7 @@
 
     <Button
         android:id="@+id/send_data2Change"
-        android:layout_width="362dp"
+        android:layout_width="266dp"
         android:layout_height="58dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="44dp"
@@ -67,7 +70,7 @@
 
     <Button
         android:id="@+id/buttonAllyChange"
-        android:layout_width="372dp"
+        android:layout_width="266dp"
         android:layout_height="58dp"
         android:layout_alignTop="@+id/LongChange"
         android:layout_marginTop="132dp"

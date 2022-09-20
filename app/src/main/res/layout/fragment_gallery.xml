@@ -9,11 +9,12 @@
 
     <EditText
         android:id="@+id/Lat"
-        android:layout_width="378dp"
+        android:layout_width="313dp"
         android:layout_height="43dp"
         android:layout_marginTop="68dp"
         android:digits="0123456789-"
         android:hint="Tu wpisz szerokosc geograficzna N/S"
+        android:textColorHint= "@color/black"
         android:inputType="numberDecimal"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,12 +24,13 @@
 
     <EditText
         android:id="@+id/Long"
-        android:layout_width="377dp"
+        android:layout_width="313dp"
         android:layout_height="52dp"
         android:layout_alignTop="@+id/Lat"
         android:layout_marginTop="24dp"
         android:digits="0123456789-"
         android:hint="Tu wpisz długość geograficzną W/E"
+        android:textColorHint= "@color/black"
         android:inputType="numberDecimal"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +39,7 @@
 
     <Button
         android:id="@+id/send_data2"
-        android:layout_width="362dp"
+        android:layout_width="266dp"
         android:layout_height="58dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="44dp"
@@ -52,17 +54,17 @@
 
     <Button
         android:id="@+id/buttonAlly"
-        android:layout_width="372dp"
+        android:layout_width="266dp"
         android:layout_height="58dp"
         android:layout_alignTop="@+id/Long"
         android:layout_marginTop="132dp"
         android:background="@drawable/button1"
         android:text="Ustaw znacznik sojusznika"
         android:textColor="@android:color/white"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Long"
-        app:backgroundTint="@null"/>
+        app:layout_constraintTop_toBottomOf="@+id/Long" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

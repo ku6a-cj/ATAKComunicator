@@ -26,13 +26,14 @@
 
     <EditText
         android:id="@+id/edMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="313dp"
+        android:layout_height="46dp"
         android:layout_marginTop="36dp"
         android:digits="0123456789."
         android:hint="Tu wpisz wiadomosc do wyslania"
         android:inputType="numberDecimal"
         android:text=""
+        android:textColorHint= "@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnectServer" />
@@ -60,7 +61,7 @@
         android:id="@+id/send_data"
         android:layout_width="240dp"
         android:layout_height="50dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button1"
         android:text="Send Message to server"
         android:textColor="@android:color/white"
