@@ -42,6 +42,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
@@ -113,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
         msgList = findViewById(R.id.msgList);
         edMessage = findViewById(R.id.edMessage);
         edMessage.setHint("Tu wpisz IP serwer np." + "\"" + SERVER_IP + "\"");
-        Button connectToServer = findViewById(R.id.btnConnectServer);
-        Button sendMessage = findViewById(R.id.send_data);
+        Button connectToServerr = findViewById(R.id.btnConnectServer);
+        Button sendMessagee = findViewById(R.id.send_data);
         Button sendData2 = findViewById(R.id.send_data2);
         Button AllyButton = findViewById(R.id.buttonAlly);
         Button buttonAllyChange = findViewById(R.id.buttonAllyChange);
@@ -129,8 +131,16 @@ public class MainActivity extends AppCompatActivity {
         Button ButtonApi =findViewById(R.id.buttonApi);
         TextView responseTV = findViewById(R.id.textViewResponse);
 
-
     }
+
+//    public void changeInputType(){
+//        edMessage = findViewById(R.id.edMessage);
+//        if(connected==true){
+//            edMessage.setInputType(InputType.TYPE_CLASS_TEXT);
+//        }else{
+//            edMessage.setHint("Tu wpisz IP serwer np." + "\"" + "192.168.137.4" + "\"");
+//        }
+//    }
 
     public void ApiGetInfo(){
         EditText id= findViewById(R.id.getId);
@@ -226,6 +236,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sendMessage(){
+        msgList = findViewById(R.id.msgList);
+        edMessage = findViewById(R.id.edMessage);
         String clientMessage = edMessage.getText().toString().trim();
         showMessage(clientMessage, Color.BLUE);
         if (null != clientThread) {
@@ -234,6 +246,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void connectToServer(){
+        msgList = findViewById(R.id.msgList);
+        edMessage = findViewById(R.id.edMessage);
         SERVER_IP = edMessage.getText().toString();
         if (SERVER_IP.isEmpty()) {
             Toast.makeText(MainActivity.this, "You entered a value out of range!", Toast.LENGTH_SHORT).show();
@@ -285,6 +299,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showMessage(final String message, final int color) {
+        msgList = findViewById(R.id.msgList);
+        edMessage = findViewById(R.id.edMessage);
         if(message.equals("Connected to Server!!")){
             connected=true;
             checkConnection();
@@ -485,17 +501,31 @@ public class MainActivity extends AppCompatActivity {
         client.getLastLocation().addOnSuccessListener(MainActivity.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
+                Log.e("Set location", "1");
                 if (location != null) {
-                    String MyMessageGPS= "1-Flag-"+String.valueOf(location.getLatitude())+"-"+String.valueOf(location.getLongitude())+"-0";
+                    double LatiTude = round(Double.parseDouble(String.valueOf(location.getLatitude())),3);
+                    double LonGitude=  round(Double.parseDouble(String.valueOf(location.getLongitude())),3);
+                    String MyMessageGPS= "1-Flag-"+String.valueOf(LatiTude)+"-"+String.valueOf(LonGitude)+"-0"+"-0"+"-0";
+                    Log.e("My LaT", String.valueOf(LatiTude));
+                    Log.e("My LaT", String.valueOf(LonGitude));
+                    Log.e("message", MyMessageGPS);
                     String clientMessage2 = MyMessageGPS;
                     if (null != clientThread) {
                         clientThread.sendMessage(clientMessage2);
                     }
                     edMessage.setText("");
-                    // Log.e("My location",location.toString());
+                     //Log.e("My location",location.toString());
                 }
             }
         });
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
     public void addStrikeAircraft(){
