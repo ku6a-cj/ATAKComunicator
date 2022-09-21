@@ -15,6 +15,8 @@ import com.example.atakcomunicator.MainActivity;
 import com.example.atakcomunicator.R;
 import com.example.atakcomunicator.databinding.FragmentHomeBinding;
 
+import java.util.Objects;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
@@ -26,6 +28,7 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
 
         binding.sendData.setOnClickListener(new View.OnClickListener() {
             @Override

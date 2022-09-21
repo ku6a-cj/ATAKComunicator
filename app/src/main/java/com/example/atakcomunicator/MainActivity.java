@@ -244,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void connectToServer(){
+        msgList = findViewById(R.id.msgList);
+        edMessage = findViewById(R.id.edMessage);
         SERVER_IP = edMessage.getText().toString();
         if (SERVER_IP.isEmpty()) {
             Toast.makeText(MainActivity.this, "You entered a value out of range!", Toast.LENGTH_SHORT).show();
@@ -256,6 +258,15 @@ public class MainActivity extends AppCompatActivity {
             showMessage("Connecting", clientTextColor);
         }
     }
+
+
+public boolean isConnected(){
+    if(connected=true){
+        return true;
+    }else{
+        return false;
+    }
+}
 
     public void checkConnection(){
         if(connected){
@@ -572,6 +583,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         void sendMessage(final String message) {
+            msgList = findViewById(R.id.msgList);
+            edMessage = findViewById(R.id.edMessage);
             new Thread(() -> {
                 try {
                     if (null != socket) {

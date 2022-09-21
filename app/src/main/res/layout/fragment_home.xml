@@ -28,10 +28,10 @@
         android:id="@+id/edMessage"
         android:layout_width="313dp"
         android:layout_height="46dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:hint="Here write a message"
         android:text=""
-        android:textColorHint= "@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnectServer" />
