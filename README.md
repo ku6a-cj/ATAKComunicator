@@ -1,3 +1,3 @@
 
 # Project Title
-Wtyczka do ATAK  sierż. pchor. Jakub CHODARA
+Aplikacja służąca do komunikacji z wtyczką  ATAKComunicator  sierż. pchor. Jakub CHODARA
