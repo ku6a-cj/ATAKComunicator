@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="?android:attr/actionModeFindDrawable"
+            android:icon="@drawable/message"
             android:title="Send Message"/>
         <item
             android:id="@+id/nav_gallery"
-            android:icon="?android:attr/textSelectHandle"
+            android:icon="@drawable/t72"
             android:title="Add Marker" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="?attr/homeAsUpIndicator"
+            android:icon="@drawable/relocation"
             android:title="Change Marker Position" />
         <item
             android:id="@+id/nav_info"
@@ -22,11 +22,11 @@
             android:title="Info" />
         <item
             android:id="@+id/nav_otherfunctions"
-            android:icon="@android:drawable/ic_dialog_alert"
+            android:icon="@drawable/png1"
             android:title="Other Features" />
         <item
             android:id="@+id/nav_api"
-            android:icon="@drawable/googleg_disabled_color_18"
+            android:icon="@drawable/api"
             android:title="API" />
 
     </group>
