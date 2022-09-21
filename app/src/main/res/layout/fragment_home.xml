@@ -29,7 +29,7 @@
         android:layout_width="313dp"
         android:layout_height="46dp"
         android:layout_marginTop="32dp"
-        android:hint="Here write a message"
+        android:hint="Here write a message or Server IP"
         android:text=""
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
