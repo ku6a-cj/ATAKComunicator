@@ -33,7 +33,9 @@ public class HomeFragment extends Fragment {
         binding.sendData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).sendMessage();
+                EditText edMess = binding.edMessage;
+                String Mess = edMess.getText().toString().trim();
+                ((MainActivity)getActivity()).sendMessage2(Mess);
             }
         });
 

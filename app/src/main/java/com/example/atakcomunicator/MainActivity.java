@@ -235,9 +235,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void sendMessage(){
-        edMessage = findViewById(R.id.edMessage);
-        String clientMessage = edMessage.getText().toString().trim();
+    public void sendMessage2(String clientMessage){
+        //edMessage = findViewById(R.id.edMessage);
+        //String clientMessage = edMessage.getText().toString().trim();
         showMessage(clientMessage, Color.BLUE);
         if (null != clientThread) {
             clientThread.sendMessage(clientMessage);
