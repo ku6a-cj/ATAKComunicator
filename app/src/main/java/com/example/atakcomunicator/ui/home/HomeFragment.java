@@ -1,5 +1,6 @@
 package com.example.atakcomunicator.ui.home;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,13 +37,16 @@ public class HomeFragment extends Fragment {
                 EditText edMess = binding.edMessage;
                 String Mess = edMess.getText().toString().trim();
                 ((MainActivity)getActivity()).sendMessage2(Mess);
+                ((MainActivity)getActivity()).showMessage(Mess, Color.BLUE);
             }
         });
 
         binding.btnConnectServer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).connectToServer();
+                EditText edIP = binding.edMessage;
+                String IPP = edIP.getText().toString().trim();
+                ((MainActivity)getActivity()).connectToServer(IPP);
             }
         });
         return root;
