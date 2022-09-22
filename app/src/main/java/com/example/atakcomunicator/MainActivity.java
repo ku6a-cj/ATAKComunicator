@@ -583,8 +583,6 @@ public boolean isConnected(){
         }
 
         void sendMessage(final String message) {
-            msgList = findViewById(R.id.msgList);
-            edMessage = findViewById(R.id.edMessage);
             new Thread(() -> {
                 try {
                     if (null != socket) {
