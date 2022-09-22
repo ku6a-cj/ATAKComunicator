@@ -244,8 +244,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void connectToServer(){
-        msgList = findViewById(R.id.msgList);
-        edMessage = findViewById(R.id.edMessage);
+        //msgList = findViewById(R.id.msgList);
+        //edMessage = findViewById(R.id.edMessage);
         SERVER_IP = edMessage.getText().toString();
         if (SERVER_IP.isEmpty()) {
             Toast.makeText(MainActivity.this, "You entered a value out of range!", Toast.LENGTH_SHORT).show();
